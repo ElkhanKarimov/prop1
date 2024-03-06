@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
 
-function App() {
+import React from 'react';
+import Form from './components/Form';
+
+const App = () => {
+  const [formData, setFormData] = React.useState({
+    name: '',
+    surname: '',
+    info: '',
+    age: '',
+    gender: '',
+  });
+
+  const handleFormSubmit = (data) => {
+    // Update the state with the form data
+    setFormData(data);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Form Data:</h1>
+      <p>Name: {formData.name}</p>
+      <p>Surname: {formData.surname}</p>
+      <p>Info: {formData.info}</p>
+      <p>Age: {formData.age}</p>
+      <p>Gender: {formData.gender}</p>
+
+      {/* Render the Form component and pass the handleFormSubmit function */}
+      <Form onSubmit={handleFormSubmit} />
     </div>
   );
-}
+};
 
 export default App;
+
